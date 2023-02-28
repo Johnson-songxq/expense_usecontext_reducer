@@ -1,8 +1,22 @@
+import { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+
 export const Balance = () => {
+  const { transactions } = useContext(GlobalContext);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const amounts = transactions.map((transaction) => transaction.amount);
+    const totalAmounts = amounts
+      .reduce((acc, item) => (acc += item), 0)
+      .toFixed(2);
+    setTotal(totalAmounts);
+  }, [transactions]);
+
   return (
     <>
       <h4>Your Balance</h4>
-      <h1>$1000</h1>
+      <h1 id="balance">${total}</h1>
     </>
   );
 };

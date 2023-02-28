@@ -10,12 +10,12 @@ export const IncomeExpense = () => {
 
   useEffect(() => {
     const amounts = transactions.map((transaction) => transaction.amount);
-    console.log("amounts", amounts);
+    // console.log("amounts", amounts);
     const income = amounts
       .filter((item) => item > 0)
       .reduce((acc, item) => (acc += item), 0)
       .toFixed(2);
-    console.log("income", income);
+    // console.log("income", income);
 
     const expense = (
       amounts
